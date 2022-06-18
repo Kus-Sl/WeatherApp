@@ -56,15 +56,64 @@
 		A8AF84E5285E44B100EF535A /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
-				A8AF84E6285E44B100EF535A /* AppDelegate.swift */,
-				A8AF84E8285E44B100EF535A /* SceneDelegate.swift */,
-				A8AF84EA285E44B100EF535A /* ViewController.swift */,
-				A8AF84EC285E44B100EF535A /* Main.storyboard */,
-				A8AF84EF285E44B300EF535A /* Assets.xcassets */,
-				A8AF84F1285E44B300EF535A /* LaunchScreen.storyboard */,
-				A8AF84F4285E44B300EF535A /* Info.plist */,
+				A8AF8506285E47A600EF535A /* ViewControllers */,
+				A8AF8505285E478800EF535A /* Models */,
+				A8AF8501285E473400EF535A /* ServiceLayers */,
+				A8AF8500285E46FA00EF535A /* Storyboards */,
+				A8AF8502285E474200EF535A /* App */,
+				A8AF8504285E476500EF535A /* Resourses */,
 			);
 			path = WeatherApp;
+			sourceTree = "<group>";
+		};
+		A8AF8500285E46FA00EF535A /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				A8AF84EC285E44B100EF535A /* Main.storyboard */,
+				A8AF84F1285E44B300EF535A /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		A8AF8501285E473400EF535A /* ServiceLayers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ServiceLayers;
+			sourceTree = "<group>";
+		};
+		A8AF8502285E474200EF535A /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A8AF84E8285E44B100EF535A /* SceneDelegate.swift */,
+				A8AF84F4285E44B300EF535A /* Info.plist */,
+				A8AF84E6285E44B100EF535A /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		A8AF8504285E476500EF535A /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
+				A8AF84EF285E44B300EF535A /* Assets.xcassets */,
+			);
+			path = Resourses;
+			sourceTree = "<group>";
+		};
+		A8AF8505285E478800EF535A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		A8AF8506285E47A600EF535A /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A8AF84EA285E44B100EF535A /* ViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,7 +338,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5SSHB4KN3U;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WeatherApp/Info.plist;
+				INFOPLIST_FILE = WeatherApp/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -319,7 +368,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5SSHB4KN3U;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WeatherApp/Info.plist;
+				INFOPLIST_FILE = WeatherApp/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
