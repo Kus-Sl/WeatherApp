@@ -23,7 +23,7 @@ extension Widget {
             widgets.append(Widget(
                 title: DataManager.WidgetTitles.max.rawValue,
                 image: DataManager.WidgetIcons.max.rawValue,
-                description: String(Int(data.main.temp_max.rounded())) + "°"
+                description: String(Int(data.main.tempMax.rounded())) + "°"
             ))
             fallthrough
 
@@ -31,7 +31,7 @@ extension Widget {
             widgets.append(Widget(
                 title: DataManager.WidgetTitles.min.rawValue,
                 image: DataManager.WidgetIcons.min.rawValue,
-                description: String(Int(data.main.temp_min.rounded())) + "°"
+                description: String(Int(data.main.tempMin.rounded())) + "°"
             ))
             fallthrough
 
@@ -47,7 +47,7 @@ extension Widget {
             widgets.append(Widget(
                 title: DataManager.WidgetTitles.feels.rawValue,
                 image: DataManager.WidgetIcons.feels.rawValue,
-                description: String(Int(data.main.feels_like.rounded())) + "°"
+                description: String(Int(data.main.feelsLike.rounded())) + "°"
             ))
             fallthrough
 

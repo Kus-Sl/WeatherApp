@@ -13,32 +13,60 @@ class NetworkManager {
 
     private init() {}
 
-    func fetchData(url: String = "", completion: (Result<WeatherData, NetworkErrors>) -> Void ) {
-        let decoder = JSONDecoder()
-        do {
-            let result = try decoder.decode(WeatherData.self, from: json)
-            completion(.success(result))
-        } catch {
-            completion(.failure(.decodingError))
+    func fetchData(url: String, completion: @escaping (Result<WeatherData, NetworkErrors>) -> Void ) {
+        guard let dataURL = URL(string: Links.weatherMoscow.rawValue) else {
+            completion(.failure(.invalidURL))
+            return
+        }
+
+        URLSession.shared.dataTask(with: dataURL) { data, _, error in
+            guard let data = data else {
+                completion(.failure(.noData))
+                return
+            }
+
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            do {
+                let result = try decoder.decode(WeatherData.self, from: data)
+                DispatchQueue.main.async {
+                    completion(.success(result))
+                }
+            } catch {
+                completion(.failure(.decodingError))
+            }
+        }.resume()
+    }
+
+    func fetchImage(url: String, completion: @escaping (Result<Data, NetworkErrors>) -> Void) {
+        guard let iconURL = URL(string: url) else {
+            completion(.failure(.invalidURL))
+            return
+        }
+
+        DispatchQueue.global().async {
+            guard let iconData = try? Data(contentsOf: iconURL) else {
+                completion(.failure(.noData))
+                return
+            }
+            DispatchQueue.main.async {
+                completion(.success(iconData))
+            }
         }
     }
 
-    func fetchImage(url: String = "", completion: (Result<UIImage, NetworkErrors>) -> Void) {
-        
-        let image = UIImage(named: "01d")!
-        completion(.success(image))
+    enum NetworkErrors: Error {
+        case invalidURL
+        case noData
+        case decodingError
     }
 }
+    enum Links: String {
+        case weatherMoscow = "https://api.openweathermap.org/data/2.5/weather?q=moscow&appid=28abb8964d438f713e801288761298d4&units=metric&lang=ru"
+        case weatherIcon = "https://openweathermap.org/img/wn/"
+    }
 
-enum NetworkErrors: Error {
-    case invalidURL
-    case noData
-    case decodingError
-}
-
-//http://openweathermap.org/img/wn/10d@2x.png
-
-let json = """
+    let json = """
 {
     "coord": {
         "lon": 37.6156,

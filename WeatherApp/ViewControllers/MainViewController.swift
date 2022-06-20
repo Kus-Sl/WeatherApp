@@ -34,22 +34,25 @@ class MainViewController: UIViewController {
 // MARK: Fetching data
 extension MainViewController {
     private func setData() {
-        NetworkManager.shared.fetchData { result in
+
+        NetworkManager.shared.fetchData(url: Links.weatherMoscow.rawValue) { result in
             switch result {
             case .success(let weatherData):
-                widgets = Widget.createWidgets(data: weatherData)
-                currentTempLabel.text = String(Int(weatherData.main.temp.rounded())) + "°"
-                descriptionLabel.text = weatherData.weather.first?.description
-                print(widgets)
-            case .failure(let error):
-                print(error)
-            }
-        }
+                self.widgets = Widget.createWidgets(data: weatherData)
+                self.currentTempLabel.text = String(Int(weatherData.main.temp.rounded())) + "°"
+                self.descriptionLabel.text = weatherData.weather.first?.description
+                let weatherIcon = weatherData.weather.first?.icon ?? "02n"
+                self.widgetsCollection.reloadData()
 
-        NetworkManager.shared.fetchImage { result in
-            switch result {
-            case .success(let image):
-                imageDescription.image = image
+                NetworkManager.shared.fetchImage(url: Links.weatherIcon.rawValue + weatherIcon + "@2x.png") { result in
+                    switch result {
+                    case .success(let image):
+                        self.imageDescription.image = UIImage(data: image)
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
+
             case .failure(let error):
                 print(error)
             }
