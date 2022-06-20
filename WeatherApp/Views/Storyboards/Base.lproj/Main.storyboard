@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="K7CBxKwJvYU" translatesAutoresizingMaskIntoConstraints="NO" id="OGp-Wk-D1E">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Screensaver" translatesAutoresizingMaskIntoConstraints="NO" id="OGp-Wk-D1E">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Москва" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jU1-SI-gGv">
@@ -30,7 +30,7 @@
                                 <size key="shadowOffset" width="1" height="-1"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J0z-7p-W3M">
-                                <rect key="frame" x="126" y="89" width="88" height="120.5"/>
+                                <rect key="frame" x="116" y="89" width="88" height="120.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="100"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -125,7 +125,7 @@
                             <constraint firstItem="OGp-Wk-D1E" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="Nx4-iT-6qv"/>
                             <constraint firstItem="IOy-pw-6YX" firstAttribute="top" secondItem="J0z-7p-W3M" secondAttribute="bottom" id="QR0-7y-SuL"/>
                             <constraint firstItem="jU1-SI-gGv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="X3m-W1-YXy"/>
-                            <constraint firstItem="J0z-7p-W3M" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="10" id="feB-Ce-1FO"/>
+                            <constraint firstItem="J0z-7p-W3M" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="feB-Ce-1FO"/>
                             <constraint firstAttribute="bottomMargin" secondItem="b6t-bz-ESg" secondAttribute="bottom" id="gfm-hF-rJ4"/>
                             <constraint firstItem="OGp-Wk-D1E" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="kG5-Hd-eI7"/>
                             <constraint firstItem="J0z-7p-W3M" firstAttribute="top" secondItem="jU1-SI-gGv" secondAttribute="bottom" id="o5M-a5-ixh"/>
@@ -147,7 +147,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="K7CBxKwJvYU" width="540" height="540"/>
+        <image name="Screensaver" width="540" height="540"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
