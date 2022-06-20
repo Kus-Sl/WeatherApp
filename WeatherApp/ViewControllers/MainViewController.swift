@@ -8,6 +8,12 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    @IBOutlet weak var networkErrorView: UIView! {
+        didSet {
+            networkErrorView.layer.cornerRadius = 15
+        }
+    }
+
 
     @IBOutlet weak var currentTempLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
