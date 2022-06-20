@@ -12,6 +12,17 @@ class DataManager {
 
     private init() {}
 
+    func formatDate(unixTime: Int) -> String {
+        let formater = DateFormatter()
+        formater.dateStyle = .none
+        formater.timeStyle = .short
+        formater.locale = Locale(identifier: "RU")
+        formater.timeZone = .current
+
+        let date = Date(timeIntervalSince1970: TimeInterval(unixTime))
+        return formater.string(from: date)
+    }
+
     enum WidgetTitles: String {
         case max = "Максимум"
         case min = "Минимум"

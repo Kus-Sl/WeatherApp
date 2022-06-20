@@ -30,11 +30,11 @@ struct MainData: Decodable {
 
 struct Wind: Decodable {
     let speed: Double
-    let deg: Int
 }
 
 struct SunTime: Decodable {
     let sunrise: Int
     let sunset: Int
+    let country: String
 }
 

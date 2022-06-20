@@ -24,7 +24,7 @@ class NetworkManager {
     }
 
     func fetchImage(url: String = "", completion: (Result<UIImage, NetworkErrors>) -> Void) {
-
+        
         let image = UIImage(named: "01d")!
         completion(.success(image))
     }

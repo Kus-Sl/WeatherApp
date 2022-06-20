@@ -47,6 +47,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A86C091528605B8900A9950F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A86C09162860A44D00A9950F /* Cells */,
+				A8AF8500285E46FA00EF535A /* Storyboards */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A86C09162860A44D00A9950F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A8AF8509285E62DB00EF535A /* WidgetCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		A8AF84DA285E44B100EF535A = {
 			isa = PBXGroup;
 			children = (
@@ -67,9 +84,9 @@
 			isa = PBXGroup;
 			children = (
 				A8AF8506285E47A600EF535A /* ViewControllers */,
+				A86C091528605B8900A9950F /* Views */,
 				A8AF8501285E473400EF535A /* ServiceLayers */,
 				A8AF850B285F12F100EF535A /* Models */,
-				A8AF8500285E46FA00EF535A /* Storyboards */,
 				A8AF8502285E474200EF535A /* App */,
 				A8AF8504285E476500EF535A /* Resourses */,
 			);
@@ -116,7 +133,6 @@
 			isa = PBXGroup;
 			children = (
 				A8AF8507285E602900EF535A /* MainViewController.swift */,
-				A8AF8509285E62DB00EF535A /* WidgetCollectionViewCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";

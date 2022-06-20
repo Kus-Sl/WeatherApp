@@ -29,13 +29,16 @@ class MainViewController: UIViewController {
 
         setData()
     }
+}
 
+// MARK: Fetching data
+extension MainViewController {
     private func setData() {
         NetworkManager.shared.fetchData { result in
             switch result {
             case .success(let weatherData):
                 widgets = Widget.createWidgets(data: weatherData)
-                currentTempLabel.text = String(weatherData.main.temp)
+                currentTempLabel.text = String(Int(weatherData.main.temp.rounded())) + "°"
                 descriptionLabel.text = weatherData.weather.first?.description
                 print(widgets)
             case .failure(let error):
@@ -54,45 +57,45 @@ class MainViewController: UIViewController {
     }
 }
 
-    // MARK: UICollectionViewDataSource
-    extension MainViewController: UICollectionViewDataSource {
-        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            widgets.count
-        }
-
-        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            let cell = widgetsCollection.dequeueReusableCell(withReuseIdentifier: WidgetCollectionViewCell.identifier, for: indexPath) as! WidgetCollectionViewCell
-
-            cell.config(widget: widgets[indexPath.item])
-
-            return cell
-        }
+// MARK: UICollectionViewDataSource
+extension MainViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        widgets.count
     }
 
-    //     MARK: UICollectionViewDelegateFlowLayout
-    extension MainViewController: UICollectionViewDelegateFlowLayout {
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = widgetsCollection.dequeueReusableCell(withReuseIdentifier: WidgetCollectionViewCell.identifier, for: indexPath) as! WidgetCollectionViewCell
 
-            let availableWidth = collectionView.frame.width - (items + 1) * spacing
-            let itemSize = availableWidth / items
+        cell.config(widget: widgets[indexPath.item])
 
-            return CGSize(width: itemSize, height: itemSize / 1.5)
-        }
-
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-            spacing
-        }
-
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-            spacing
-        }
-
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-            UIEdgeInsets(
-                top: spacing,
-                left: spacing,
-                bottom: spacing,
-                right: spacing
-            )
-        }
+        return cell
     }
+}
+
+//     MARK: UICollectionViewDelegateFlowLayout
+extension MainViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        let availableWidth = collectionView.frame.width - (items + 1) * spacing
+        let itemSize = availableWidth / items
+
+        return CGSize(width: itemSize, height: itemSize / 1.5)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        spacing
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        spacing
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        UIEdgeInsets(
+            top: spacing,
+            left: spacing,
+            bottom: spacing,
+            right: spacing
+        )
+    }
+}

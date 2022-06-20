@@ -23,7 +23,7 @@ extension Widget {
             widgets.append(Widget(
                 title: DataManager.WidgetTitles.max.rawValue,
                 image: DataManager.WidgetIcons.max.rawValue,
-                description: String(data.main.temp_max)
+                description: String(Int(data.main.temp_max.rounded())) + "°"
             ))
             fallthrough
 
@@ -31,7 +31,7 @@ extension Widget {
             widgets.append(Widget(
                 title: DataManager.WidgetTitles.min.rawValue,
                 image: DataManager.WidgetIcons.min.rawValue,
-                description: String(data.main.temp_min)
+                description: String(Int(data.main.temp_min.rounded())) + "°"
             ))
             fallthrough
 
@@ -39,7 +39,7 @@ extension Widget {
             widgets.append(Widget(
                 title: DataManager.WidgetTitles.wind.rawValue,
                 image: DataManager.WidgetIcons.wind.rawValue,
-                description: String(data.wind.speed)
+                description: String(data.wind.speed) + "м/с"
             ))
             fallthrough
 
@@ -47,7 +47,7 @@ extension Widget {
             widgets.append(Widget(
                 title: DataManager.WidgetTitles.feels.rawValue,
                 image: DataManager.WidgetIcons.feels.rawValue,
-                description: String(data.weather.first?.description ?? "")
+                description: String(Int(data.main.feels_like.rounded())) + "°"
             ))
             fallthrough
 
@@ -55,7 +55,7 @@ extension Widget {
             widgets.append(Widget(
                 title: DataManager.WidgetTitles.humidity.rawValue,
                 image: DataManager.WidgetIcons.humidity.rawValue,
-                description: String(data.main.humidity)
+                description: String(data.main.humidity) + "%"
             ))
             fallthrough
 
@@ -63,7 +63,8 @@ extension Widget {
             widgets.append(Widget(
                 title: DataManager.WidgetTitles.pressure.rawValue,
                 image: DataManager.WidgetIcons.pressure.rawValue,
-                description: String(data.main.pressure)
+                description: String(Int((Double(data.main.pressure) * 0.750062)
+                    .rounded())) + "мм.рт.ст"
             ))
             fallthrough
 
@@ -71,7 +72,7 @@ extension Widget {
             widgets.append(Widget(
                 title: DataManager.WidgetTitles.sunrise.rawValue,
                 image: DataManager.WidgetIcons.sunrise.rawValue,
-                description: String(data.sys.sunrise)
+                description: DataManager.shared.formatDate(unixTime: data.sys.sunrise)
             ))
             fallthrough
 
@@ -79,7 +80,7 @@ extension Widget {
             widgets.append(Widget(
                 title: DataManager.WidgetTitles.sunset.rawValue,
                 image: DataManager.WidgetIcons.sunset.rawValue,
-                description: String(data.sys.sunset)
+                description: DataManager.shared.formatDate(unixTime: data.sys.sunset)
             ))
         }
 
