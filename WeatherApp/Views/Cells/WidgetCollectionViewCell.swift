@@ -21,6 +21,8 @@ class WidgetCollectionViewCell: UICollectionViewCell {
         descriptionLabel.text = widget.description
 
         layer.cornerRadius = 10
+        layer.borderWidth = 0.5
+        layer.borderColor = UIColor.black.cgColor
     }
 }
 

@@ -9,12 +9,10 @@ import UIKit
 
 class MainViewController: UIViewController {
     @IBOutlet weak var networkErrorView: UIView! {
-        didSet {
-            networkErrorView.layer.cornerRadius = 15
-        }
+        didSet { networkErrorView.layer.cornerRadius = 15 }
     }
 
-
+    @IBOutlet weak var spinnerImageDescription: UIActivityIndicatorView!
     @IBOutlet weak var currentTempLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
 
@@ -53,6 +51,7 @@ extension MainViewController {
                 NetworkManager.shared.fetchImage(url: Links.weatherIcon.rawValue + weatherIcon + "@2x.png") { result in
                     switch result {
                     case .success(let image):
+                        self.spinnerImageDescription.stopAnimating()
                         self.imageDescription.image = UIImage(data: image)
                     case .failure(let error):
                         print(error)
@@ -60,6 +59,10 @@ extension MainViewController {
                 }
 
             case .failure(let error):
+                DispatchQueue.main.async {
+                    self.spinnerImageDescription.stopAnimating()
+                    self.networkErrorView.isHidden.toggle()
+                }
                 print(error)
             }
         }

@@ -114,9 +114,9 @@
 		A8AF8502285E474200EF535A /* App */ = {
 			isa = PBXGroup;
 			children = (
-				A8AF84E8285E44B100EF535A /* SceneDelegate.swift */,
 				A8AF84F4285E44B300EF535A /* Info.plist */,
 				A8AF84E6285E44B100EF535A /* AppDelegate.swift */,
+				A8AF84E8285E44B100EF535A /* SceneDelegate.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
