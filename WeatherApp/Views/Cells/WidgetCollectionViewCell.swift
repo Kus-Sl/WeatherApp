@@ -19,6 +19,9 @@ class WidgetCollectionViewCell: UICollectionViewCell {
         titleImage.image = UIImage(systemName: widget.image ?? "")
         titleLabel.text = widget.title
         descriptionLabel.text = widget.description
+
+        self.layer.cornerRadius = 10
+//        self.backgroundColor = .red
     }
 }
 
