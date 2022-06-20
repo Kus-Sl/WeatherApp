@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A86C0910285F541E00A9950F /* JSONModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86C090F285F541E00A9950F /* JSONModels.swift */; };
+		A86C0912285F546E00A9950F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86C0911285F546E00A9950F /* NetworkManager.swift */; };
+		A86C091428604C5100A9950F /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86C091328604C5000A9950F /* DataManager.swift */; };
 		A8AF84E7285E44B100EF535A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AF84E6285E44B100EF535A /* AppDelegate.swift */; };
 		A8AF84E9285E44B100EF535A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AF84E8285E44B100EF535A /* SceneDelegate.swift */; };
 		A8AF84EE285E44B100EF535A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8AF84EC285E44B100EF535A /* Main.storyboard */; };
@@ -14,9 +17,13 @@
 		A8AF84F3285E44B300EF535A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8AF84F1285E44B300EF535A /* LaunchScreen.storyboard */; };
 		A8AF8508285E602900EF535A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AF8507285E602900EF535A /* MainViewController.swift */; };
 		A8AF850A285E62DB00EF535A /* WidgetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AF8509285E62DB00EF535A /* WidgetCollectionViewCell.swift */; };
+		A8AF850D285F134600EF535A /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AF850C285F134600EF535A /* Widget.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A86C090F285F541E00A9950F /* JSONModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONModels.swift; sourceTree = "<group>"; };
+		A86C0911285F546E00A9950F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		A86C091328604C5000A9950F /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		A8AF84E3285E44B100EF535A /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8AF84E6285E44B100EF535A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8AF84E8285E44B100EF535A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +33,7 @@
 		A8AF84F4285E44B300EF535A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A8AF8507285E602900EF535A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		A8AF8509285E62DB00EF535A /* WidgetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetCollectionViewCell.swift; sourceTree = "<group>"; };
+		A8AF850C285F134600EF535A /* Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Widget.swift; path = WeatherApp/Models/Widget.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +88,8 @@
 		A8AF8501285E473400EF535A /* ServiceLayers */ = {
 			isa = PBXGroup;
 			children = (
+				A86C0911285F546E00A9950F /* NetworkManager.swift */,
+				A86C091328604C5000A9950F /* DataManager.swift */,
 			);
 			path = ServiceLayers;
 			sourceTree = "<group>";
@@ -114,6 +124,8 @@
 		A8AF850B285F12F100EF535A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A8AF850C285F134600EF535A /* Widget.swift */,
+				A86C090F285F541E00A9950F /* JSONModels.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -190,7 +202,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8AF850A285E62DB00EF535A /* WidgetCollectionViewCell.swift in Sources */,
+				A86C091428604C5100A9950F /* DataManager.swift in Sources */,
 				A8AF8508285E602900EF535A /* MainViewController.swift in Sources */,
+				A8AF850D285F134600EF535A /* Widget.swift in Sources */,
+				A86C0912285F546E00A9950F /* NetworkManager.swift in Sources */,
+				A86C0910285F541E00A9950F /* JSONModels.swift in Sources */,
 				A8AF84E7285E44B100EF535A /* AppDelegate.swift in Sources */,
 				A8AF84E9285E44B100EF535A /* SceneDelegate.swift in Sources */,
 			);

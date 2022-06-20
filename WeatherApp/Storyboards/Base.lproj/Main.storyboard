@@ -120,6 +120,7 @@
                     <connections>
                         <outlet property="currentTempLabel" destination="J0z-7p-W3M" id="0ak-fw-0dv"/>
                         <outlet property="descriptionLabel" destination="IOy-pw-6YX" id="W75-rS-Twr"/>
+                        <outlet property="imageDescription" destination="tqH-oR-ZoZ" id="XdD-8T-RX9"/>
                         <outlet property="widgetsCollection" destination="b6t-bz-ESg" id="JLZ-U4-IgC"/>
                     </connections>
                 </viewController>

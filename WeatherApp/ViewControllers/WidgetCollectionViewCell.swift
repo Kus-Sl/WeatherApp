@@ -15,14 +15,11 @@ class WidgetCollectionViewCell: UICollectionViewCell {
 
     static let identifier = "Widget"
 
-
-
-    func setupWidgetCell(title: String, image: UIImage, description: String) {
-        titleLabel.text = title
-        titleImage.image = image
-        descriptionLabel.text = description
+    func config(widget: Widget) {
+        titleImage.image = UIImage(systemName: widget.image ?? "")
+        titleLabel.text = widget.title
+        descriptionLabel.text = widget.description
     }
-
 }
 
 
