@@ -43,8 +43,6 @@ extension MainViewController {
             switch result {
             case .success(let weatherData):
                 self.widgets = Widget.createWidgets(data: weatherData)
-                self.currentTempLabel.text = String(Int(weatherData.main.temp.rounded())) + "°"
-                self.descriptionLabel.text = weatherData.weather.first?.description
                 let weatherIcon = weatherData.weather.first?.icon ?? "02n"
                 self.widgetsCollection.reloadData()
 
@@ -52,6 +50,8 @@ extension MainViewController {
                     switch result {
                     case .success(let image):
                         self.spinnerImageDescription.stopAnimating()
+                        self.currentTempLabel.text = " \(String(Int(weatherData.main.temp.rounded())))°"
+                        self.descriptionLabel.text = weatherData.weather.first?.description
                         self.imageDescription.image = UIImage(data: image)
                     case .failure(let error):
                         print(error)
