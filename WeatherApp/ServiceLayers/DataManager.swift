@@ -23,7 +23,7 @@ class DataManager {
         return formater.string(from: date)
     }
 
-    enum WidgetTitles: String {
+    enum WidgetTitles: String, CaseIterable {
         case max = "Максимум"
         case min = "Минимум"
         case wind = "Ветер"
@@ -34,7 +34,7 @@ class DataManager {
         case sunset = "Закат"
     }
 
-    enum WidgetIcons: String {
+    enum WidgetIcons: String, CaseIterable {
         case max = "sun.max.fill" //􀆮
         case min = "sun.min.fill" //􀆬
         case wind = "wind" //􀇤

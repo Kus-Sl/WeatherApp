@@ -16,71 +16,38 @@ struct Widget {
 extension Widget {
     static func createWidgets(data: WeatherData) -> [Widget] {
         var widgets: [Widget] = []
-        let widget = DataManager.WidgetTitles.max
 
-        switch widget {
-        case .max:
-            widgets.append(Widget(
-                title: DataManager.WidgetTitles.max.rawValue,
-                image: DataManager.WidgetIcons.max.rawValue,
-                description: String(Int(data.main.tempMax.rounded())) + "°"
-            ))
-            fallthrough
+        let titles = DataManager.WidgetTitles.allCases.map { $0.rawValue }
+        let icons = DataManager.WidgetIcons.allCases.map { $0.rawValue }
+        var description: String
 
-        case .min:
-            widgets.append(Widget(
-                title: DataManager.WidgetTitles.min.rawValue,
-                image: DataManager.WidgetIcons.min.rawValue,
-                description: String(Int(data.main.tempMin.rounded())) + "°"
-            ))
-            fallthrough
+        for (index, title) in titles.enumerated() {
+            guard let test = DataManager.WidgetTitles.init(rawValue: title)
+            else { return widgets }
 
-        case .wind:
-            widgets.append(Widget(
-                title: DataManager.WidgetTitles.wind.rawValue,
-                image: DataManager.WidgetIcons.wind.rawValue,
-                description: String(data.wind.speed) + "м/с"
-            ))
-            fallthrough
+            switch test {
+            case .max:
+                description = String(Int(data.main.tempMax.rounded())) + "°"
+            case .min:
+                description = String(Int(data.main.tempMin.rounded())) + "°"
+            case .wind:
+                description = String(data.wind.speed) + "м/с"
+            case .feels:
+                description = String(Int(data.main.feelsLike.rounded())) + "°"
+            case .humidity:
+                description = String(data.main.humidity) + "%"
+            case .pressure:
+                description = String(Int((Double(data.main.pressure) * 0.750062).rounded())) + "мм.рт.ст"
+            case .sunrise:
+                description = DataManager.shared.formatDate(unixTime: data.sys.sunrise)
+            case .sunset:
+                description = DataManager.shared.formatDate(unixTime: data.sys.sunset)
+            }
 
-        case .feels:
             widgets.append(Widget(
-                title: DataManager.WidgetTitles.feels.rawValue,
-                image: DataManager.WidgetIcons.feels.rawValue,
-                description: String(Int(data.main.feelsLike.rounded())) + "°"
-            ))
-            fallthrough
-
-        case .humidity:
-            widgets.append(Widget(
-                title: DataManager.WidgetTitles.humidity.rawValue,
-                image: DataManager.WidgetIcons.humidity.rawValue,
-                description: String(data.main.humidity) + "%"
-            ))
-            fallthrough
-
-        case .pressure:
-            widgets.append(Widget(
-                title: DataManager.WidgetTitles.pressure.rawValue,
-                image: DataManager.WidgetIcons.pressure.rawValue,
-                description: String(Int((Double(data.main.pressure) * 0.750062)
-                    .rounded())) + "мм.рт.ст"
-            ))
-            fallthrough
-
-        case .sunrise:
-            widgets.append(Widget(
-                title: DataManager.WidgetTitles.sunrise.rawValue,
-                image: DataManager.WidgetIcons.sunrise.rawValue,
-                description: DataManager.shared.formatDate(unixTime: data.sys.sunrise)
-            ))
-            fallthrough
-
-        case .sunset:
-            widgets.append(Widget(
-                title: DataManager.WidgetTitles.sunset.rawValue,
-                image: DataManager.WidgetIcons.sunset.rawValue,
-                description: DataManager.shared.formatDate(unixTime: data.sys.sunset)
+                title: title,
+                image: icons[index],
+                description: description
             ))
         }
 
