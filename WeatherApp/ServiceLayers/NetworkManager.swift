@@ -54,19 +54,20 @@ class NetworkManager {
             }
         }
     }
-
-    enum NetworkErrors: Error {
-        case invalidURL
-        case noData
-        case decodingError
-    }
 }
-    enum Links: String {
-        case weatherMoscow = "https://api.openweathermap.org/data/2.5/weather?q=moscow&appid=28abb8964d438f713e801288761298d4&units=metric&lang=ru"
-        case weatherIcon = "https://openweathermap.org/img/wn/"
-    }
 
-    let json = """
+enum NetworkErrors: Error {
+    case invalidURL
+    case noData
+    case decodingError
+}
+
+enum Links: String {
+    case weatherMoscow = "https://api.openweathermap.org/data/2.5/weather?q=moscow&appid=28abb8964d438f713e801288761298d4&units=metric&lang=ru"
+    case weatherIcon = "https://openweathermap.org/img/wn/"
+}
+
+let json = """
 {
     "coord": {
         "lon": 37.6156,

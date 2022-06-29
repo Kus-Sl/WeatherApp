@@ -45,8 +45,3 @@ class DataManager {
         case sunset = "sunset.fill" //􀆴
     }
 }
-
-
-
-
-
