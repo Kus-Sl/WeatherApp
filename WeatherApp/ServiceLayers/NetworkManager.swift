@@ -38,6 +38,20 @@ class NetworkManager {
         }.resume()
     }
 
+    func fetchDataManual(data: Data, completion: (Result<WeatherData, NetworkErrors>) -> Void) {
+        guard let jsonData = try? JSONSerialization.jsonObject(with: json) else {
+            completion(.failure(.decodingError))
+            return
+        }
+
+        guard let weatherData = WeatherData.getWeatherData(json: jsonData) else {
+            completion(.failure(.decodingError))
+            return
+        }
+
+        completion(.success(weatherData))
+    }
+
     func fetchImage(url: String, completion: @escaping (Result<Data, NetworkErrors>) -> Void) {
         guard let iconURL = URL(string: url) else {
             completion(.failure(.invalidURL))
@@ -66,52 +80,3 @@ enum Links: String {
     case weatherMoscow = "https://api.openweathermap.org/data/2.5/weather?q=moscow&appid=28abb8964d438f713e801288761298d4&units=metric&lang=ru"
     case weatherIcon = "https://openweathermap.org/img/wn/"
 }
-
-let json = """
-{
-    "coord": {
-        "lon": 37.6156,
-        "lat": 55.7522
-    },
-    "weather": [
-        {
-            "id": 804,
-            "main": "Clouds",
-            "description": "пасмурно",
-            "icon": "04n"
-        }
-    ],
-    "base": "stations",
-    "main": {
-        "temp": 16.64,
-        "feels_like": 15.93,
-        "temp_min": 15.31,
-        "temp_max": 17.29,
-        "pressure": 1013,
-        "humidity": 60,
-        "sea_level": 1013,
-        "grnd_level": 996
-    },
-    "visibility": 10000,
-    "wind": {
-        "speed": 1.65,
-        "deg": 259,
-        "gust": 2.85
-    },
-    "clouds": {
-        "all": 100
-    },
-    "dt": 1655578110,
-    "sys": {
-        "type": 1,
-        "id": 9029,
-        "country": "RU",
-        "sunrise": 1655513057,
-        "sunset": 1655576218
-    },
-    "timezone": 10800,
-    "id": 524901,
-    "name": "Москва",
-    "cod": 200
-}
-""".data(using: .utf8)!
