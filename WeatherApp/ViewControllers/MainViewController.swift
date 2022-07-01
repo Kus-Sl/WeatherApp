@@ -31,27 +31,27 @@ class MainViewController: UIViewController {
         widgetsCollection.delegate = self
         widgetsCollection.dataSource = self
 
-        setData()
+        setWeatherData()
     }
 }
 
 // MARK: Fetching data
 extension MainViewController {
-    private func setData() {
+    private func setWeatherData() {
 
         NetworkManager.shared.fetchData(url: Links.weatherMoscow.rawValue) { result in
             switch result {
             case .success(let weatherData):
                 self.widgets = Widget.createWidgets(data: weatherData)
                 let weatherIcon = weatherData.weather.first?.icon ?? "02n"
+                self.currentTempLabel.text = "\(Int(weatherData.main.temp.rounded()))°"
+                self.descriptionLabel.text = weatherData.weather.first?.description
                 self.widgetsCollection.reloadData()
 
                 NetworkManager.shared.fetchImage(url: Links.weatherIcon.rawValue + weatherIcon + "@2x.png") { result in
                     switch result {
                     case .success(let image):
                         self.spinnerImageDescription.stopAnimating()
-                        self.currentTempLabel.text = " \(String(Int(weatherData.main.temp.rounded())))°"
-                        self.descriptionLabel.text = weatherData.weather.first?.description
                         self.imageDescription.image = UIImage(data: image)
                     case .failure(let error):
                         print(error)

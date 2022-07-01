@@ -13,8 +13,8 @@ class NetworkManager {
 
     private init() {}
 
-    func fetchData(url: String, completion: @escaping (Result<WeatherData, NetworkErrors>) -> Void ) {
-        guard let dataURL = URL(string: Links.weatherMoscow.rawValue) else {
+    func fetchData(url: String, isManualParsing: Bool = false, completion: @escaping (Result<WeatherData, NetworkErrors>) -> Void ) {
+        guard let dataURL = URL(string: url) else {
             completion(.failure(.invalidURL))
             return
         }
@@ -25,31 +25,32 @@ class NetworkManager {
                 return
             }
 
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            do {
-                let result = try decoder.decode(WeatherData.self, from: data)
-                DispatchQueue.main.async {
-                    completion(.success(result))
+            switch isManualParsing {
+            case true:
+                do {
+                    let jsonData = try JSONSerialization.jsonObject(with: data)
+                    DispatchQueue.main.async {
+                        if let weatherData = WeatherData.getWeatherData(json: jsonData) {
+                            completion(.success(weatherData))
+                        }
+                    }
+                } catch {
+                    completion(.failure(.decodingError))
                 }
-            } catch {
-                completion(.failure(.decodingError))
+
+            case false:
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                do {
+                    let result = try decoder.decode(WeatherData.self, from: data)
+                    DispatchQueue.main.async {
+                        completion(.success(result))
+                    }
+                } catch {
+                    completion(.failure(.decodingError))
+                }
             }
         }.resume()
-    }
-
-    func fetchDataManual(data: Data, completion: (Result<WeatherData, NetworkErrors>) -> Void) {
-        guard let jsonData = try? JSONSerialization.jsonObject(with: json) else {
-            completion(.failure(.decodingError))
-            return
-        }
-
-        guard let weatherData = WeatherData.getWeatherData(json: jsonData) else {
-            completion(.failure(.decodingError))
-            return
-        }
-
-        completion(.success(weatherData))
     }
 
     func fetchImage(url: String, completion: @escaping (Result<Data, NetworkErrors>) -> Void) {
@@ -80,3 +81,4 @@ enum Links: String {
     case weatherMoscow = "https://api.openweathermap.org/data/2.5/weather?q=moscow&appid=28abb8964d438f713e801288761298d4&units=metric&lang=ru"
     case weatherIcon = "https://openweathermap.org/img/wn/"
 }
+
