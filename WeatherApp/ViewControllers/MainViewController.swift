@@ -54,6 +54,9 @@ extension MainViewController {
                         self.spinnerImageDescription.stopAnimating()
                         self.imageDescription.image = UIImage(data: image)
                     case .failure(let error):
+                        DispatchQueue.main.async {
+                            self.spinnerImageDescription.stopAnimating()
+                        }
                         print(error)
                     }
                 }
