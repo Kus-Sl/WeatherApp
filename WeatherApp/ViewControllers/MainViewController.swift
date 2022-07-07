@@ -39,16 +39,16 @@ class MainViewController: UIViewController {
 extension MainViewController {
     private func setWeatherData() {
 
-        NetworkManager.shared.fetchData(url: Links.weatherMoscow.rawValue) { result in
+        NetworkManager.shared.fetchData(from: Links.weatherMoscow.rawValue) { result in
             switch result {
             case .success(let weatherData):
-                self.widgets = Widget.createWidgets(data: weatherData)
+                self.widgets = Widget.createWidgets(with: weatherData)
                 let weatherIcon = weatherData.weather.first?.icon ?? "02n"
                 self.currentTempLabel.text = "\(Int(weatherData.main.temp.rounded()))°"
                 self.descriptionLabel.text = weatherData.weather.first?.description
                 self.widgetsCollection.reloadData()
 
-                NetworkManager.shared.fetchImage(url: Links.weatherIcon.rawValue + weatherIcon + "@2x.png") { result in
+                NetworkManager.shared.fetchImage(from: Links.weatherIcon.rawValue + weatherIcon + "@2x.png") { result in
                     switch result {
                     case .success(let image):
                         self.spinnerImageDescription.stopAnimating()
@@ -81,7 +81,7 @@ extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = widgetsCollection.dequeueReusableCell(withReuseIdentifier: WidgetCollectionViewCell.identifier, for: indexPath) as! WidgetCollectionViewCell
 
-        cell.config(widget: widgets[indexPath.item])
+        cell.configureCell(with: widgets[indexPath.item])
 
         return cell
     }

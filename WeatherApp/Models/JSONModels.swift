@@ -27,7 +27,7 @@ struct WeatherData: Decodable {
         sys = SunTime(data: sysDict)
     }
 
-    static func getWeatherData(json: Any) -> WeatherData? {
+    static func getWeatherData(from json: Any) -> WeatherData? {
         guard let jsonData = json as? [String: Any] else { return nil }
         return WeatherData(data: jsonData)
     }

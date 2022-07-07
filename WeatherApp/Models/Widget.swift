@@ -14,7 +14,7 @@ struct Widget {
 }
 
 extension Widget {
-    static func createWidgets(data: WeatherData) -> [Widget] {
+    static func createWidgets(with data: WeatherData) -> [Widget] {
         var widgets: [Widget] = []
 
         let titles = DataManager.WidgetTitles.allCases.map { $0.rawValue }
@@ -39,9 +39,9 @@ extension Widget {
             case .pressure:
                 description = String(Int((Double(data.main.pressure) * 0.750062).rounded())) + "мм.рт.ст"
             case .sunrise:
-                description = DataManager.shared.formatDate(unixTime: data.sys.sunrise)
+                description = DataManager.shared.formatDateToStandard(from: data.sys.sunrise)
             case .sunset:
-                description = DataManager.shared.formatDate(unixTime: data.sys.sunset)
+                description = DataManager.shared.formatDateToStandard(from: data.sys.sunset)
             }
 
             widgets.append(Widget(

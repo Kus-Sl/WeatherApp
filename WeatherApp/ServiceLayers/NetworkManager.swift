@@ -13,7 +13,7 @@ class NetworkManager {
 
     private init() {}
 
-    func fetchData(url: String, isManualParsing: Bool = false, completion: @escaping (Result<WeatherData, NetworkErrors>) -> Void ) {
+    func fetchData(from url: String, isManualParsing: Bool = false, completion: @escaping (Result<WeatherData, NetworkErrors>) -> Void ) {
         guard let dataURL = URL(string: url) else {
             completion(.failure(.invalidURL))
             return
@@ -30,7 +30,7 @@ class NetworkManager {
                 do {
                     let jsonData = try JSONSerialization.jsonObject(with: data)
                     DispatchQueue.main.async {
-                        if let weatherData = WeatherData.getWeatherData(json: jsonData) {
+                        if let weatherData = WeatherData.getWeatherData(from: jsonData) {
                             completion(.success(weatherData))
                         }
                     }
@@ -53,7 +53,7 @@ class NetworkManager {
         }.resume()
     }
 
-    func fetchImage(url: String, completion: @escaping (Result<Data, NetworkErrors>) -> Void) {
+    func fetchImage(from url: String, completion: @escaping (Result<Data, NetworkErrors>) -> Void) {
         guard let iconURL = URL(string: url) else {
             completion(.failure(.invalidURL))
             return

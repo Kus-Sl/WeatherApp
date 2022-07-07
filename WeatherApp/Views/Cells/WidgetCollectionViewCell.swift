@@ -15,7 +15,7 @@ class WidgetCollectionViewCell: UICollectionViewCell {
 
     static let identifier = "Widget"
 
-    func config(widget: Widget) {
+    func configureCell(with widget: Widget) {
         titleImage.image = UIImage(systemName: widget.image ?? "")
         titleLabel.text = widget.title
         descriptionLabel.text = widget.description

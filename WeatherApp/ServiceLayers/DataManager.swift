@@ -12,7 +12,7 @@ class DataManager {
 
     private init() {}
 
-    func formatDate(unixTime: Int) -> String {
+    func formatDateToStandard(from unixTime: Int) -> String {
         let formater = DateFormatter()
         formater.dateStyle = .none
         formater.timeStyle = .short
